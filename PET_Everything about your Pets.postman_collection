@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "b1a0f578-527a-4827-910c-3a25f34b6134",
+		"name": "PET Everything about your Pets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - PET ID_Status",
+			"item": [
+				{
+					"name": "TC_Verify_01_Execute the API verify Pet Name, Pet Id, Pet Status and Pet Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_01 Verified 200 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"/* ####### Pet Status ######### */\r",
+									"pm.test(\"TC_Verify_01 Verified the Pet status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_01 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Pet Name ######### */\r",
+									"pm.test(\"TC_Verify_01 Verified the Pet Name displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Persian cat\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/532",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"532"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_09_To check the deleted record.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_09 Verified 404 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"/* ####### Message ######### */\r",
+									"pm.test(\"TC_Verify_09 Verified the message displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Pet not found\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_09 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Type ######### */\r",
+									"pm.test(\"TC_Verify_01 Verified the Pet Name displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/9223372000001083000",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9223372000001083000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_02_Execute the API using alphabets as ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_02 Verified 404 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"/* ####### Message ######### */\r",
+									"pm.test(\"TC_Verify_02 Verified the message displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"java.lang.NumberFormatException\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_02 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Type ######### */\r",
+									"pm.test(\"TC_Verify_02 Verified the type displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unknown\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/erwrwer",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"erwrwer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_03_Execute the API using invalid PetId 12",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_03 Verified 404 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"/* ####### Message ######### */\r",
+									"pm.test(\"TC_Verify_03 Verified the message displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Pet not found\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_03 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Type ######### */\r",
+									"pm.test(\"TC_Verify_03 Verified the type displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"error\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/0",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_04_Execute the API and Verify the statuses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_04 Verified 200 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_04 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Pet Status ######### */\r",
+									"pm.test(\"TC_Verify_04 Verified the Pet status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=available",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_05_Execute the API to create a new PET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_04 Verified 200 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_04 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Status ######### */\r",
+									"pm.test(\"TC_Verify_04 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"available\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 100,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Persian cat\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_06_To check the duplicate entry.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_06 Verified 409 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_06 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Status ######### */\r",
+									"pm.test(\"TC_Verify_06 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Already Exists\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 532,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Persian cat\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_07 Execute the API for deletion of PET from the store.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_07 Verified 200 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_07 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Message ######### */\r",
+									"pm.test(\"TC_Verify_07 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"9223372000001083000\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Type ######### */\r",
+									"pm.test(\"TC_Verify_07 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"unknown\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/9223372000001083000",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9223372000001083000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_08_Deletion of non existing entity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_08 Verified 404 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_08 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/9223372000001083000",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9223372000001083000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC_Verify_10_To create an order for PET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/* ####### RESPONSE HEADER ######### */\r",
+									"pm.test(\"TC_Verify_10 Verified 200 status code is displayed in the response header\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/* ####### Response Time ######### */\r",
+									"pm.test(\"TC_Verify_10 Verify the response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});\r",
+									"\r",
+									"/* ####### Status ######### */\r",
+									"pm.test(\"TC_Verify_10 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"placed\");\r",
+									"});\r",
+									"\r",
+									"/* ####### Complete ######### */\r",
+									"pm.test(\"TC_Verify_10 Verified the status displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"true\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 101,\r\n  \"petId\": 0,\r\n  \"quantity\": 0,\r\n  \"shipDate\": \"2022-03-09T20:41:51.442+0000\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/store/order",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
